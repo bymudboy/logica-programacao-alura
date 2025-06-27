@@ -1,0 +1,25 @@
+<html>
+
+    <h1>Digite um número de 0 a 100</h1>
+    <input id="numero" type="text">
+    <input id="advinhar" type="submit" value="Compare com o meu segredo!">
+
+</html>
+<script>
+    let segredos = [16, 34, 37, 42, 50, 58];
+    let caixaDoNumero = document.getElementById("numero");
+    segredos.push(60, 70, 80, 90);
+    function botaoClicado() {
+        for ( let i = 0; i < segredos.length; i++) {
+            if (segredos[i] == caixaDoNumero.value){
+                alert("Parabéns, você acertou o número " + (i + 1) + "º dos números secretos!");
+                return;
+            }
+        }
+        alert("Infelizmente, você errou! Boa sorte na próxima vez!");
+    }
+
+    let botaoAdvinhar = document.getElementById("advinhar");
+    botaoAdvinhar.onclick = botaoClicado;
+
+</script>

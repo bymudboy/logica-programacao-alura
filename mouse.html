@@ -1,0 +1,34 @@
+<canvas id="tela" width="600" height="400"></canvas>
+
+<script>
+
+let tela = document.getElementById("tela");
+let c = tela.getContext("2d");
+
+c.fillStyle = "gray";
+c.fillRect(0, 0, 600, 400);
+
+tela.onmousedown = function(evento){    //onmousemove deixa rastro do mouse
+    let x = evento.pageX - tela.offsetLeft;
+    let y = evento.pageY - tela.offsetTop;
+   
+    if(evento.button === 0) { 
+        c.fillStyle = "blue";
+    } else if(evento.button === 1) {
+        c.fillStyle = "black";
+    } else if(evento.button === 2) {
+        c.fillStyle = "red";
+    }
+
+   
+    c.beginPath();
+    c.arc(x, y, 5, 0, 2 * Math.PI);
+    c.fill(); 
+    console.log("posição do clique: " + x + ", " + y);
+};
+
+tela.oncontextmenu = function(evento) {
+    evento.preventDefault(); 
+};
+
+</script>

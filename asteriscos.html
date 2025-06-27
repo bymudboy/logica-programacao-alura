@@ -1,0 +1,42 @@
+<script>
+    //  QUADRADO
+    // let tamanhoLinha = prompt("Qual o tamanho da linha do quadrado que você deseja?");
+    // let tamanhoColuna = prompt("Qual o tamanho da coluna do quadrado que você deseja?");
+
+    // for (let linha = 0; linha < tamanhoLinha; linha++) {
+    //     for (let coluna = 0; coluna < tamanhoColuna; coluna++) {
+    //         document.write("*");
+    //     }
+    //     document.write("<br>");
+    // }
+
+    // TRINÂNGULO LATERAL
+    // let tamanho = prompt("qual tamanho do triângulo desejado?"); 
+
+    // for (let linha = 1; linha <= tamanho; linha++) {
+    //     for (let coluna = 1; coluna <= linha; coluna++) {
+    //         document.write("*");
+    //     }
+    //     document.write("<br>");
+    // }
+
+    // V DE VINGAÇA
+    let tamanho = parseInt(prompt("Qual tamanho do V desejado?"));
+
+    for (let linha = 1; linha <= Math.ceil(tamanho / 2); linha++) {
+        for (let coluna = 1; coluna <= tamanho; coluna++) {
+
+            if (coluna === linha || coluna === (tamanho - linha + 1)) {
+                document.write("*");
+            } else {
+                document.write("_");
+            }
+
+        }
+        document.write("<br>");
+    }
+
+
+
+
+</script>

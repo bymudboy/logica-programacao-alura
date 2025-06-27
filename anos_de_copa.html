@@ -1,0 +1,17 @@
+<script>
+
+    //functions
+    function mostra(frase) {
+        document.write(frase + "<br>");
+    }
+
+    var anoDeCopa = parseInt(prompt("Informe o ano inicial:"));
+    var anoLimite = parseInt(prompt("Você selecionou a contagem de copas a partir de " + anoDeCopa + ". Até qual ano você quer listar as Copas?"));
+
+    while(anoDeCopa <= anoLimite) {
+        mostra(anoDeCopa + " tem copa!");
+        anoDeCopa += 4;
+    }
+
+    mostra("<strong>UFA !!! esses foram os anos de copa do mundo até " + anoLimite + "</strong>");
+</script>

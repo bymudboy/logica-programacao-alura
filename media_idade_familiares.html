@@ -1,0 +1,21 @@
+<script>
+    // functions
+
+    function mostra(frase) {
+        document.write(frase + "<br>");
+    }
+
+    // variáveis    
+    var totalDeFamiliares = prompt("Quantos familiares são?")
+    var numero = 1;
+    var somaIdades = 0;
+
+    while (numero <= totalDeFamiliares){
+       var idade = parseInt(prompt("Qual é a idade? [" + numero + "]" ));
+       somaIdades += idade;
+       numero++;
+    }
+
+    var media = somaIdades / totalDeFamiliares;
+    mostra("A média de idade entre os familiares é de " + Math.round(media) + " anos.");
+</script>
