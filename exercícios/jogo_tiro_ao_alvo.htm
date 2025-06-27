@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Tiro ao Alvo</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    #container {
+      text-align: center;
+    }
+
+    canvas {
+      border: 2px solid #000;
+      margin-bottom: 10px;
+      background-color: #fff;
+    }
+
+    #score {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    #resultado {
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <div id="score">Pontuação: 0</div>
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const resultado = document.getElementById("resultado");
+    const scoreDisplay = document.getElementById("score");
+
+    let alvoX;
+    let alvoY;
+    let pontuacao = 0;
+
+    function cor(corEscolhida) {
+      ctx.fillStyle = corEscolhida;
+    }
+
+    function circulo(x, y, raio) {
+      ctx.beginPath();
+      ctx.arc(x, y, raio, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function desenhaAlvo(x, y) {
+      let raio = 40;
+      cor("red");
+      circulo(x, y, raio);
+      cor("white");
+      circulo(x, y, raio * 0.75);
+      cor("red");
+      circulo(x, y, raio * 0.5);
+      cor("white");
+      circulo(x, y, raio * 0.25);
+    }
+
+    function desenhaNovoAlvo() {
+      limpa();
+      alvoX = sorteia(560); 
+      alvoY = sorteia(360); 
+      desenhaAlvo(alvoX, alvoY);
+    }
+
+    function sorteia(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    function limpa() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function atualizarPontuacao() {
+      scoreDisplay.innerText = `Pontuação: ${pontuacao}`;
+    }
+
+    canvas.onclick = function (evento) {
+      let rect = canvas.getBoundingClientRect();
+      let x = evento.clientX - rect.left;
+      let y = evento.clientY - rect.top;
+
+      let distancia = Math.sqrt((x - alvoX) ** 2 + (y - alvoY) ** 2);
+
+      if (distancia <= 40) {
+        pontuacao++;
+        atualizarPontuacao();
+        resultado.innerText = "🎯 Acertou!";
+        desenhaNovoAlvo();
+      } else {
+        alert("Você Errou! Tente novamente.");
+        pontuacao = 0;
+        atualizarPontuacao();
+        resultado.innerText = "Clique para tentar de novo!";
+        desenhaNovoAlvo();
+      }
+    };
+
+    // Início do jogo
+    atualizarPontuacao();
+    desenhaNovoAlvo();
+  </script>
+</body>
+</html>

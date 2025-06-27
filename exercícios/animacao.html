@@ -1,0 +1,33 @@
+<canvas id="tela" height="600" width="400"></canvas>
+
+<script>
+    let tela = document.getElementById("tela"); 
+    let c = tela.getContext("2d");
+
+    c.fillStyle = "green";
+    c.fillRect(0, 0, 200, 400);
+
+    function circulo(x, y, raio){
+        c.strokeStyle = "blue";
+        c.beginPath();
+        c.arc(x, y, raio, 0, 2 * Math.PI);
+        c.stroke();
+    }
+
+    function limpaTela(){
+        c.clearRect(0, 0, 600, 400);
+    }
+
+
+    function desenha(){
+        circulo(x, 100, x/2);
+        x++;
+    }
+    let x = 0;
+
+
+    function desenhaImagem(x, y){
+        c.drawImage(imagem, x, y);
+    }
+    setInterval(desenha, 30); 
+</script>

@@ -1,0 +1,52 @@
+<script>
+    // Sorteando 6 números aleatórios de 1 a 60 (sem repetir)
+let numerosSorteados = [];
+
+while (numerosSorteados.length < 6) {
+  let numero = Math.floor(Math.random() * 60) + 1;
+  if (!numerosSorteados.includes(numero)) {
+    numerosSorteados.push(numero);
+  }
+}
+
+console.log("Números sorteados:", numerosSorteados);
+
+// Pegando 6 números do usuário
+let numerosUsuario = [];
+
+for (let i = 1; i <= 6; i++) {
+  let numero = parseInt(prompt(`Digite o ${i}º número (entre 1 e 60):`));
+  while (isNaN(numero) || numero < 1 || numero > 60 || numerosUsuario.includes(numero)) {
+    numero = parseInt(prompt(`Inválido! Digite o ${i}º número (entre 1 e 60, sem repetir):`));
+  }
+  numerosUsuario.push(numero);
+}
+
+console.log("Seus números:", numerosUsuario);
+
+// Verificando quantos números acertou
+let acertos = 0;
+
+for (let numero of numerosUsuario) {
+  if (numerosSorteados.includes(numero)) {
+    acertos++;
+  }
+}
+
+alert(`Você acertou ${acertos} número(s)!`);
+
+// Calculando chances de acertar os 6 números
+// Fórmula da combinação: C(n, k) = n! / (k! * (n - k)!)
+function fatorial(n) {
+  let resultado = 1;
+  for (let i = 2; i <= n; i++) {
+    resultado *= i;
+  }
+  return resultado;
+}
+
+let totalPossibilidades = fatorial(60) / (fatorial(6) * fatorial(60 - 6));
+
+alert(`As chances de acertar os 6 números são de 1 em ${totalPossibilidades.toLocaleString('pt-BR')}`);
+
+</script>

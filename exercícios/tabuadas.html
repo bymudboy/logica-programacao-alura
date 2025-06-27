@@ -1,0 +1,20 @@
+<script>
+
+    // functions
+    function mostra(frase) {
+        document.write(frase + "<br>");
+    }
+
+    // variáveis
+    let multiplicador = 1;
+    let tabuada = parseInt(prompt("Informe o número da tabuada que você quer ver:"));
+
+    // loop
+    while (multiplicador <= 10) {
+        mostra(tabuada + " x " + multiplicador + " = " + "<strong>" + tabuada * multiplicador + "</strong>");
+        multiplicador++;
+    } 
+
+
+
+</script>

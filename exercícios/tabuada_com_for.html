@@ -1,0 +1,13 @@
+<script>
+    // functions
+
+    function mostra(frase) {
+        document.write(frase + "<br>");
+    }
+
+    let numero = parseInt(prompt("Digite um número para ver a tabuada:"));
+
+    for(let multiplicador = 1 ; multiplicador <= 20 ; multiplicador++) {
+        mostra(multiplicador + " x " + numero + " = " + (multiplicador  * numero));
+    }
+</script>

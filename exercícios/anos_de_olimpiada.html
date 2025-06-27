@@ -1,0 +1,20 @@
+<script>
+
+    //functions
+    function mostra(frase) {
+        document.write(frase + "<br>");
+    }
+
+    // var anoDeOlimpiada = parseInt(prompt("Informe o ano inicial:"));
+    // var anoLimite = parseInt(prompt("Você selecionou a contagem de copas a partir de " + anoDeCopa + ". Até qual ano você quer listar as Copas?"));
+    
+    var anoDeOlimpiada = 1896;
+    var anoLimite = parseInt(prompt("Até qual ano você quer listar as Olimpíadas?"));
+
+    while(anoDeOlimpiada <= anoLimite) {
+        mostra(anoDeOlimpiada + " tem Olimpíada!");
+        anoDeOlimpiada += 4;
+    }
+
+    mostra("<strong>UFA !!! esses foram os anos de Olímpiadas até " + anoLimite + "</strong>");
+</script>
